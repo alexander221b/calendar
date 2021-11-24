@@ -1,5 +1,3 @@
-
-
 //Configura y crea un calendario js
 function createCalendar(jsonEvents){
     var calendarEl = document.getElementById('calendar');
@@ -42,19 +40,17 @@ function createCalendar(jsonEvents){
       dayMaxEvents: true, // allow "more" link when too many events
       events: jsonEvents,
       eventDrop: function(event) {
-        arg = event.event;
+        var arg = event.event;
         updateEvent(arg);
-        //console.log(arg.title);
-
+      },
+      eventResize: function(event) {
+        var arg = event.event;
+        updateEvent(arg);
       }
     });
     
     calendar.render();
     calendar.today();
-    //calendar.today();
-    //console.log(fechaInicial);
-
-
   }
 
 

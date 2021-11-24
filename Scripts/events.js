@@ -32,10 +32,6 @@ function loadEvents(data){
 		jsonEvents.push(feed);
     }
 
-    console.log("Eventos cargados de la base de datos:");
-    console.log(jsonEvents);
-
-    //Crea el calendario con el objeto json
     createCalendar(jsonEvents);
 }   
 
@@ -52,8 +48,6 @@ function createEvent(calendar, arg, title){
       allday: arg.allDay
      }
      
-
-     console.log(arg.allDay);
      
     fetch(urlEvents, {
       method: "POST",
@@ -89,14 +83,14 @@ function updateEvent(arg){
     id = arg.id;
     // data to be sent to the POST request
     let data = {
-      id:id,
-      title:arg.title,
-      start: arg.start, 
+      id: id,
+      title: arg.title.toLocaleString('en-US'),
+      start: arg.start.toLocaleString('en-US'), 
       end: arg.end,
       allday: arg.allDay
     };
-     
-     const putMethod = {
+
+    const putMethod = {
        method: 'PUT', // Method itself
        headers: {
         'Content-type': 'application/json' // Indicates the content 
@@ -109,8 +103,6 @@ function updateEvent(arg){
       .then(response => response.json())
       .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
       .catch(err => console.log(err)); // Do something with the error
-
-
 }
 
 
