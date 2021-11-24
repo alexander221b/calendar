@@ -44,15 +44,16 @@ function loadEvents(data){
 // su id de evento proveniente de la base de datos
 function createEvent(calendar, arg, title){
     // data to be sent to the POST request
-
+   
     let data = {
       title: title,
       start: arg.start, 
       end: arg.end,
       allday: arg.allDay
      }
+     
 
-     console.log(data);
+     console.log(arg.allDay);
      
     fetch(urlEvents, {
       method: "POST",
@@ -67,7 +68,7 @@ function createEvent(calendar, arg, title){
             title: title,
             start: arg.start,
             end: arg.end,
-            allday: arg.allDay
+            allDay: arg.allDay
           })
 
     })
