@@ -26,11 +26,12 @@ function loadEvents(data){
     				'title': event.title, 
     				'start': event.start, 
     				'end': event.end,
-            'allDay':event.allday
+                    'allDay':event.allday
             
     			};
 		jsonEvents.push(feed);
     }
+    console.log(jsonEvents);
 
     createCalendar(jsonEvents);
 }   
@@ -84,9 +85,9 @@ function updateEvent(arg){
     // data to be sent to the POST request
     let data = {
       id: id,
-      title: arg.title.toLocaleString('en-US'),
+      title: arg.title,
       start: arg.start.toLocaleString('en-US'), 
-      end: arg.end,
+      end: arg.end.toLocaleString('en-US'),
       allday: arg.allDay
     };
 
